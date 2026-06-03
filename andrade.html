@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sistema de votação</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="caixa">
+        <h2>sistema de votação</h2>
+        <input type="number" id="idade" placeholder="Digite sua idade: ">
+        <button onclick="verificarIdade()">Verificar idade</button>
+    
+        <br><br>
+
+        <input type="number" id="voto" placeholder="Digite o número do voto: ">
+        <button onclick="verificarVoto()">Confirmar voto</button>
+      
+        <div id="resultado"></div>
+    </div>
+
+    <script>
+        function verificarVoto(){
+            let voto = Number(document.getElementById("voto").value);
+            let resultado = document.getElementById("resultado");
+
+              
+            while  (voto != 80){
+             resultado.innerHTML = "Voto inválido digite novamente!";
+                 
+                return;
+            }
+            resultado.innerHTML = "Voto confirmado com sucesso!"
+
+        }
+        
+        function verificarIdade() {
+            let idade = Number(document.getElementById("idade").value);
+            let resultado = document.getElementById("resultado");
+            let voto = Number(document.getElementById("voto").value);
+
+           if (idade <16) {
+            resultado.innerHTML = "Não vota";
+           }
+           else if (idade < 18 || idade > 70) {
+            resultado.innerHTML = "Voto opcional";
+           }
+           else {
+           resultado.innerHTML = "Voto obrigatório";
+           }
+
+        }
+
+
+        
+    </script>
+
+</body>
+</html>
