@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Votação</title>
+
+    <link rel="stylesheet" href="urna.css">
+</head>
+
+<body>
+
+    <div class="caixa">
+
+        <h2>Sistema de Votação</h2>
+
+        <input type="number" id="idade" placeholder="Digite sua idade">
+
+        <button onclick="verificarIdade()">
+            Verificar idade
+        </button>
+
+        <br><br>
+
+        <input type="number" id="voto" placeholder="Digite seu voto">
+
+        <button onclick="verificarVoto()">
+            Verificar voto
+        </button>
+
+        <div id="resultado"></div>
+
+    </div>
+
+    <script src="urna.js"></script>
+
+</body>
+</html>
