@@ -1,0 +1,224 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+
+    font-family: Arial, sans-serif;
+
+    background: linear-gradient(
+        135deg,
+        #ffb6dd,
+        #e8b8ff,
+        #ffc9e8
+    );
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    color: #7b316c;
+}
+
+.inicio {
+    text-align: center;
+
+    background: #ffffffdd;
+
+    padding: 60px;
+
+    border-radius: 35px;
+
+    box-shadow: 0 15px 40px #8d397755;
+
+    width: 90%;
+
+    max-width: 600px;
+}
+
+.logo {
+    font-size: 80px;
+
+    margin-bottom: 15px;
+}
+
+h1 {
+    font-family: Georgia, serif;
+
+    font-size: 45px;
+
+    color: #e73596;
+
+    margin-bottom: 15px;
+}
+
+p {
+    font-size: 18px;
+
+    margin-bottom: 30px;
+}
+
+button {
+    border: none;
+
+    padding: 17px 35px;
+
+    border-radius: 30px;
+
+    background: linear-gradient(
+        90deg,
+        #f447a1,
+        #b85de9
+    );
+
+    color: white;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+button:hover {
+    transform: scale(1.05);
+}
+
+
+.caixa {
+    background: #ffffffdd;
+
+    padding: 40px;
+
+    border-radius: 30px;
+
+    width: 90%;
+
+    max-width: 450px;
+
+    text-align: center;
+
+    box-shadow: 0 15px 40px #8d397755;
+}
+
+.caixa h1 {
+    font-size: 32px;
+
+    color: #e73596;
+}
+
+.avatar {
+    font-size: 80px;
+
+    margin: 20px;
+}
+
+.caixa label {
+    display: block;
+
+    text-align: left;
+
+    font-weight: bold;
+
+    margin-top: 15px;
+}
+
+.caixa input,
+.caixa select {
+    width: 100%;
+
+    padding: 12px;
+
+    margin-top: 5px;
+
+    border: 2px solid #f3a5d0;
+
+    border-radius: 12px;
+
+    font-size: 15px;
+}
+
+.caixa button {
+    margin-top: 25px;
+
+    width: 100%;
+}
+
+.jogo {
+    background: #ffffffdd;
+
+    width: 90%;
+
+    max-width: 900px;
+
+    padding: 40px;
+
+    border-radius: 30px;
+
+    text-align: center;
+
+    box-shadow: 0 15px 40px #8d397755;
+}
+
+.jogo h1 {
+    color: #e73596;
+}
+
+.status {
+    margin: 25px;
+
+    padding: 15px;
+
+    background: #ffe0f0;
+
+    border-radius: 20px;
+
+    font-weight: bold;
+}
+
+.locais {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 15px;
+
+    margin-top: 20px;
+}
+
+.locais button {
+    padding: 25px;
+
+    border-radius: 20px;
+
+    background: #ffd7eb;
+
+    color: #753563;
+
+    font-size: 18px;
+
+    font-weight: bold;
+}
+
+#mensagem {
+    margin-top: 25px;
+
+    font-size: 20px;
+
+    font-weight: bold;
+
+    color: #df3893;
+}
+
+@media (max-width: 700px) {
+
+    .locais {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
