@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Barbie Dream World</title>
+
+    <link rel="stylesheet" href="barbie.css">
+</head>
+
+<body>
+
+    <!-- TELA INICIAL -->
+
+    <section id="inicio" class="tela">
+
+        <div class="inicio">
+
+            <div class="logo">🎀</div>
+
+            <h1>Barbie Dream World</h1>
+
+            <p>
+                Um mundo de sonhos começa aqui ✨
+            </p>
+
+            <button onclick="mostrarCriacao()">
+                 CRIAR PERSONAGEM
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- TELA DE CRIAÇÃO -->
+
+    <section id="criacao" class="tela escondida">
+
+        <div class="caixa">
+
+            <h1>✨ Crie sua personagem</h1>
+
+            <p>
+                Escolha quem você quer ser no Dream World!
+            </p>
+
+
+            <div class="avatar">
+                👩🏻
+            </div>
+
+
+            <label>Nome:</label>
+
+            <input
+                type="text"
+                id="nome"
+                placeholder="Digite seu nome"
+            >
+
+
+            <label>Profissão:</label>
+
+            <select id="profissao">
+
+                <option value="Estilista">
+                    👗 Estilista
+                </option>
+
+                <option value="Cantora">
+                    🎤 Cantora
+                </option>
+
+                <option value="Veterinária">
+                    🐶 Veterinária
+                </option>
+
+                <option value="Astronauta">
+                    🚀 Astronauta
+                </option>
+
+                <option value="Médica">
+                    🩺 Médica
+                </option>
+
+            </select>
+
+
+            <label>Estilo:</label>
+
+            <select id="estilo">
+
+                <option value="Patricinha">
+                    🎀 Patricinha
+                </option>
+
+                <option value="Princesa">
+                    👑 Princesa
+                </option>
+
+                <option value="Rockstar">
+                    🎸 Rockstar
+                </option>
+
+                <option value="Fashion">
+                    👗 Fashion
+                </option>
+
+            </select>
+
+
+            <button onclick="iniciarJogo()">
+                💗 INICIAR
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- TELA DO JOGO -->
+
+    <section id="jogo" class="tela escondida">
+
+        <div class="jogo">
+
+            <h1>
+                🌸 Bem-vinda ao Dream World!
+            </h1>
+
+            <h2 id="nomeJogador"></h2>
+
+            <p id="profissaoJogador"></p>
+
+            <div class="status">
+
+                💰 Moedas:
+                <span id="moedas">100</span>
+
+                &nbsp;&nbsp;
+
+                ⚡ Energia:
+                <span id="energia">100</span>
+
+            </div>
+
+
+            <h2>
+                ✨ Para onde você quer ir?
+            </h2>
+
+
+            <div class="locais">
+
+                <button onclick="irPara('Shopping')">
+                    🛍️
+                    <br>
+                    Shopping
+                </button>
+
+                <button onclick="irPara('Salão')">
+                    💇‍♀️
+                    <br>
+                    Salão
+                </button>
+
+                <button onclick="irPara('Praia')">
+                    🏖️
+                    <br>
+                    Praia
+                </button>
+
+                <button onclick="irPara('Parque')">
+                    🌳
+                    <br>
+                    Parque
+                </button>
+
+            </div>
+
+
+            <p id="mensagem"></p>
+
+        </div>
+
+    </section>
+
+
+    <script src="barbie.js"></script>
+
+</body>
+
+</html>
