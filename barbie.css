@@ -1,0 +1,592 @@
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    width: 100%;
+    min-height: 100%;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #ffe3f2;
+}
+
+#jogo {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    min-height: 420px;
+    overflow: hidden;
+    isolation: isolate;
+    background: linear-gradient(
+        to bottom,
+        #8edaff 0%,
+        #d8f4ff 58%,
+        #fff0fa 100%
+    );
+}
+
+.ceu {
+    position: absolute;
+    inset: 0 0 85px 0;
+    overflow: hidden;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.nuvem {
+    position: absolute;
+    width: 75px;
+    height: 27px;
+    border-radius: 30px;
+    background: white;
+    box-shadow: 0 3px 8px #8bc9e522;
+}
+
+.nuvem::before,
+.nuvem::after {
+    content: "";
+    position: absolute;
+    bottom: 5px;
+    border-radius: 50%;
+    background: white;
+}
+
+.nuvem::before {
+    width: 35px;
+    height: 35px;
+    left: 10px;
+}
+
+.nuvem::after {
+    width: 27px;
+    height: 27px;
+    right: 10px;
+}
+
+.nuvem1 {
+    top: 70px;
+    left: 10%;
+}
+
+.nuvem2 {
+    top: 130px;
+    left: 55%;
+    transform: scale(.8);
+}
+
+.nuvem3 {
+    top: 45px;
+    left: 80%;
+    transform: scale(.65);
+}
+
+.dreamhouse {
+    display: none;
+}
+
+#personagem {
+    position: absolute;
+    z-index: 16;
+    left: 120px;
+    bottom: 85px;
+    width: 65px;
+    height: 85px;
+    object-fit: contain;
+    object-position: center bottom;
+    transform-origin: center bottom;
+}
+
+#personagem img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+#personagem.pulando {
+    animation: pulo .65s ease-out;
+}
+
+@keyframes pulo {
+    0% {
+        bottom: 85px;
+    }
+
+    45% {
+        bottom: 245px;
+    }
+
+    70% {
+        bottom: 245px;
+    }
+
+    100% {
+        bottom: 85px;
+    }
+}
+
+#objetosMovel {
+    position: absolute;
+    z-index: 4;
+    left: 0;
+    bottom: 85px;
+    width: 100%;
+    height: 100px;
+    pointer-events: none;
+}
+
+.arbusto {
+    position: absolute;
+    left: 65%;
+    bottom: 0;
+    width: 75px;
+    height: 45px;
+    border-radius: 50% 50% 10% 10%;
+    background: #70ce82;
+}
+
+.arbusto::before,
+.arbusto::after {
+    content: "";
+    position: absolute;
+    bottom: 10px;
+    width: 40px;
+    height: 35px;
+    border-radius: 50%;
+    background: #8ce49a;
+}
+
+.arbusto::before {
+    left: -12px;
+}
+
+.arbusto::after {
+    right: -12px;
+}
+
+.flor {
+    position: absolute;
+    bottom: 5px;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: #ff70bd;
+    box-shadow:
+        0 -9px 0 -2px #ffb4df,
+        9px 0 0 -2px #ffb4df,
+        0 9px 0 -2px #ffb4df,
+        -9px 0 0 -2px #ffb4df;
+}
+
+.flor::after {
+    content: "";
+    position: absolute;
+    left: 6px;
+    top: 14px;
+    width: 3px;
+    height: 24px;
+    background: #55b86d;
+}
+
+.flor1 {
+    left: 30%;
+}
+
+.flor2 {
+    left: 75%;
+}
+
+.flor3 {
+    left: 90%;
+    transform: scale(.8);
+}
+
+#chao {
+    position: absolute;
+    z-index: 12;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 85px;
+    border-top: 7px solid #ff9fd3;
+    background-color: #ffc5e6;
+    background-image: repeating-linear-gradient(
+        90deg,
+        #ffc5e6 0,
+        #ffc5e6 45px,
+        #ffa9d8 45px,
+        #ffa9d8 90px
+    );
+    box-shadow: 0 -4px 10px #e56ca733;
+}
+
+.obstaculo {
+    position: absolute;
+    z-index: 14;
+    bottom: 85px;
+    width: 42px;
+    height: 58px;
+    border: 3px solid #fff;
+    border-radius: 18px 18px 7px 7px;
+    background: linear-gradient(135deg, #ff73ba, #d94891);
+    box-shadow: 0 3px 8px #9b286044;
+}
+
+.obstaculo::before {
+    content: "♥";
+    position: absolute;
+    top: 8px;
+    left: 50%;
+    color: white;
+    font-size: 19px;
+    transform: translateX(-50%);
+}
+
+.obstaculo.pequeno {
+    width: 35px;
+    height: 38px;
+    border-radius: 50% 50% 7px 7px;
+    background: linear-gradient(135deg, #ffcae8, #ff75ba);
+}
+
+.obstaculo.alto {
+    width: 45px;
+    height: 75px;
+    background: linear-gradient(135deg, #d7a2ff, #a86ee2);
+}
+
+.local-mapa {
+    position: absolute;
+    z-index: 6;
+    bottom: 85px;
+    width: 190px;
+    height: 220px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    pointer-events: none;
+}
+
+.construcao {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 170px;
+    height: 145px;
+    border: 4px solid white;
+    border-radius: 18px 18px 4px 4px;
+    background: linear-gradient(#ffd5f0, #ff83ca);
+    box-shadow: 0 5px 15px #d75b9b66;
+    font-size: 90px;
+}
+
+.casa .construcao {
+    height: 165px;
+    background: linear-gradient(#ffc9ed, #ff78c4);
+}
+
+.hospital .construcao {
+    background: linear-gradient(#fff, #ffb9dc);
+}
+
+.parque .construcao {
+    background: linear-gradient(#d6ffd2, #83e7a2);
+}
+
+.escola .construcao {
+    background: linear-gradient(#ffe7a9, #ffb4d7);
+}
+
+.nome-local {
+    margin-top: 8px;
+    padding: 7px 11px;
+    border-radius: 12px;
+    background: white;
+    color: #d63384;
+    font-size: 13px;
+    font-weight: bold;
+    text-align: center;
+    white-space: nowrap;
+    box-shadow: 0 2px 8px #0002;
+}
+
+#pontuacao {
+    position: absolute;
+    z-index: 20;
+    top: 20px;
+    right: 25px;
+    color: #d63384;
+    font-size: 27px;
+    font-weight: bold;
+    text-shadow: 1px 2px white;
+}
+
+#avisoLocal {
+    position: absolute;
+    z-index: 30;
+    top: 22%;
+    left: 50%;
+    max-width: 90%;
+    padding: 14px 22px;
+    border: 3px solid white;
+    border-radius: 18px;
+    background: #ff65b7;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(-50%, -10px);
+    transition: opacity .25s, transform .25s;
+}
+
+#avisoLocal.aviso-visivel {
+    opacity: 1;
+    transform: translate(-50%, 0);
+}
+
+.tela {
+    position: absolute;
+    z-index: 50;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    padding: 24px;
+    overflow-y: auto;
+    background: #fff0f7ee;
+    text-align: center;
+}
+
+.tela h1,
+.tela h2 {
+    margin: 0;
+    color: #d63384;
+}
+
+.tela p {
+    margin: 0;
+    color: #9e2864;
+}
+
+.escondido {
+    display: none !important;
+}
+
+#cadastro input,
+.tela input {
+    width: min(320px, 90vw);
+    padding: 12px 14px;
+    border: 2px solid #f6a5d1;
+    border-radius: 12px;
+    outline: none;
+    background: white;
+    font-size: 16px;
+}
+
+#cadastro input:focus,
+.tela input:focus {
+    border-color: #d63384;
+}
+
+.tela button,
+#cadastro button,
+#listaJogadores button {
+    padding: 10px 16px;
+    border: 0;
+    border-radius: 12px;
+    background: #ff75ba;
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background .2s, transform .2s;
+}
+
+.tela button:hover,
+#cadastro button:hover,
+#listaJogadores button:hover {
+    background: #e64c9d;
+    transform: translateY(-1px);
+}
+
+button:disabled {
+    cursor: not-allowed;
+    opacity: .5;
+}
+
+#mensagemCadastro {
+    min-height: 20px;
+    color: #c62872;
+}
+
+#listaJogadores {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: min(500px, 95%);
+    max-height: 35vh;
+    overflow-y: auto;
+}
+
+.linha-jogador {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 12px;
+    border: 1px solid #ffc0df;
+    border-radius: 14px;
+    background: white;
+    text-align: left;
+}
+
+.informacoes-jogador {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    color: #9e2864;
+    overflow-wrap: anywhere;
+}
+
+.acoes-jogador {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 6px;
+}
+
+.acoes-jogador button {
+    padding: 8px 10px !important;
+}
+
+#resultado {
+    color: #d63384;
+    font-size: 23px;
+    font-weight: bold;
+}
+
+@media (max-width: 600px) {
+    #personagem {
+        left: 55px;
+        width: 55px;
+        height: 75px;
+    }
+
+    .local-mapa {
+        transform: scale(.8);
+        transform-origin: bottom left;
+    }
+
+    #pontuacao {
+        top: 12px;
+        right: 12px;
+        font-size: 22px;
+    }
+
+    .linha-jogador {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .acoes-jogador {
+        justify-content: flex-start;
+    }
+
+    .tela {
+        padding: 15px;
+    }
+}
+
+
+#personagem {
+    position: absolute;
+    z-index: 16;
+    left: 120px;
+    bottom: 85px;
+    width: 65px;
+    height: 105px;
+    transform-origin: center bottom;
+    background:
+       
+        radial-gradient(ellipse at 50% 17%, #ffee6b 0 35%, transparent 37%),
+        radial-gradient(ellipse at 50% 25%  #ffee6b 0 43%, transparent 45%),
+       
+        radial-gradient(ellipse at 50% 23%, #ffd3b5 0 25%, transparent 27%),
+       
+        linear-gradient(#ff75ba, #ff75ba);
+    background-size:
+        48px 57px,
+        43px 56px,
+        31px 35px,
+        31px 25px;
+    background-position:
+        center 0,
+        center 0,
+        center 13px,
+        center 48px;
+    background-repeat: no-repeat;
+}
+
+#personagem::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 8px;
+    left: 8px;
+    width: 49px;
+    height: 61px;
+    border-radius: 48% 48% 35% 35%;
+    background: #ffe366;
+}
+
+#personagem::after {
+    content: "•  •";
+    position: absolute;
+    top: 19px;
+    left: 20px;
+    width: 25px;
+    height: 75px;
+    color: #5093fd;
+    font-size: 10px;
+    line-height: 14px;
+    text-align: center;
+    white-space: pre;
+    background:
+        linear-gradient(#ffd3b5, #ffd3b5) center 0 / 25px 18px no-repeat,
+        linear-gradient(#ff75ba, #ff75ba) center 20px / 31px 25px no-repeat,
+        linear-gradient(#ffd3b5, #ffd3b5) 4px 43px / 7px 20px no-repeat,
+        linear-gradient(#ffd3b5, #ffd3b5) 15px 43px / 7px 20px no-repeat,
+        linear-gradient(#ff4dc1, #ff6ba9) 3px 63px / 9px 10px no-repeat,
+        linear-gradient(#dc3ab3, #ff4ab1) 14px 63px / 9px 10px no-repeat;
+}
+
+#personagem.pulando {
+    animation: pulo .65s ease-out;
+}
+
+@keyframes pulo {
+    0%, 100% {
+        bottom: 85px;
+    }
+    45%, 70% {
+        bottom: 245px;
+    }
+}
+
+@media (max-width: 600px) {
+    #personagem {
+        left: 55px;
+        width: 55px;
+        height: 95px;
+    }
+}
+
